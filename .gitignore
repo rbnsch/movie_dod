@@ -130,3 +130,4 @@ dmypy.json
 
 # Data Storage files of the project
 data.csv
+help.py

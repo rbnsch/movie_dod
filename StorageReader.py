@@ -12,6 +12,13 @@ class ReadStorage(DataStorage):
         self.reader = csv.reader(self.file)
 
 
-    def readContent(self):
-        for lines in self.reader:
-            print(lines)
+    def getContent(self):
+        count = 0
+        movies = []
+        for row in self.reader:
+            if count == 0:
+                count += 1
+            else:
+                count += 1
+                movies.append(row)
+        return movies

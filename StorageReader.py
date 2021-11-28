@@ -5,17 +5,17 @@ class ReadStorage(DataStorage):
 
     def __init__(self, fileLocation):
         super().__init__(fileLocation)
-        self.openFile()
+        self._openFile()
 
-    def openFile(self):
-        self.file = open(self.fileLocation, 'r')
-        self.reader = csv.reader(self.file)
+    def _openFile(self):
+        self._file = open(self._fileLocation, 'r')
+        self._reader = csv.reader(self._file)
 
 
     def getContent(self):
         count = 0
         movies = []
-        for row in self.reader:
+        for row in self._reader:
             if count == 0:
                 count += 1
             else:

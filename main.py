@@ -1,5 +1,6 @@
 import optparse
 from APIRequests import APIRequest
+from searchEngine import SearchEngine
 
 def main():
     parser = optparse.OptionParser()
@@ -27,6 +28,8 @@ def main():
         a.performRequest()
     if options.check:
         print("Check movie:", options.check)
+        s = SearchEngine(options.check)
+        s.checkPattern()
 
 if __name__ == '__main__':
     main()

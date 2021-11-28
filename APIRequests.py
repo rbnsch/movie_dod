@@ -2,34 +2,40 @@ import requests
 import json
 from StorageWriter import WriteStorage
 
-url = 'https://imdb-api.com/en/API/Company/'
+class APIRequest:
 
-payload = {}
-headers = {}
+    url = 'https://imdb-api.com/en/API/Company/'
 
-start = 1
-api_key = ""
-company_key = "co0050471"
+    payload = {}
+    headers = {}
 
-movies = []
+    movies = []
 
-while True:
-    requestURL = url + api_key + "/" + company_key + "&start=" + str(start)
-    print(requestURL)
-    response = requests.request("GET", requestURL, headers=headers, data = payload)
+    def __init__(self, api_key, company_key):
+        self._api_key = api_key
+        self._company_key = company_key
 
-    start += 50
+    def performRequest(self):
+        start = 1
+        while True:
+            response = requests.request("GET", self.prepareURL(start),
+                    headers=APIRequest.headers, data = APIRequest.payload)
 
-    if response.status_code == 200:
-        data = response.json()
-        if data["errorMessage"] == "":
-            print(data["name"])
-            for movie in data["items"]:
-                print(movie["title"])
-                print(movie["year"])
-                movies.append( (movie["title"], movie["year"]) )
-        if start >= 50 or not data["items"]:
-            break;
+            start += 50
 
-writeStoreage = WriteStorage("data.csv")
-writeStoreage.writeContent(movies)
+            if response.status_code == 200:
+                data = response.json()
+                if data["errorMessage"] == "":
+                    for movie in data["items"]:
+                        APIRequest.movies.append( (movie["title"], movie["year"]) )
+                if start >= 1000 or not data["items"]:
+                    break;
+        self.safeMovies()
+
+    def prepareURL(self, start):
+        return APIRequest.url + self._api_key + "/" + self._company_key + "&start=" + str(start)
+
+
+    def safeMovies(self):
+        writeStoreage = WriteStorage("data.csv")
+        writeStoreage.writeContent(APIRequest.movies)

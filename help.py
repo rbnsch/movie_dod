@@ -1,6 +1,4 @@
-from StorageReader import ReadStorage
+from APIRequests import APIRequest
 
-r = ReadStorage("data.csv")
-p = r.getContent()
-
-print(p)
+a = APIRequest("k_hp4v0hii", "co0050471")
+a.performRequest()

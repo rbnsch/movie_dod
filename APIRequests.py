@@ -1,5 +1,6 @@
 import requests
 import json
+from StorageWriter import WriteStorage
 
 url = 'https://imdb-api.com/en/API/Company/'
 
@@ -9,6 +10,8 @@ headers = {}
 start = 1
 api_key = ""
 company_key = "co0050471"
+
+movies = []
 
 while True:
     requestURL = url + api_key + "/" + company_key + "&start=" + str(start)
@@ -23,5 +26,10 @@ while True:
             print(data["name"])
             for movie in data["items"]:
                 print(movie["title"])
-        if start >= 1000 or not data["items"]:
+                print(movie["year"])
+                movies.append( (movie["title"], movie["year"]) )
+        if start >= 50 or not data["items"]:
             break;
+
+writeStoreage = WriteStorage("data.csv")
+writeStoreage.writeContent(movies)

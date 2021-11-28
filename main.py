@@ -1,4 +1,5 @@
 import optparse
+from APIRequests import APIRequest
 
 def main():
     parser = optparse.OptionParser()
@@ -19,7 +20,11 @@ def main():
     if options.api:
         print("New API Key:", options.api)
     if options.update:
+        key = input("Please enter api key")
+        company = input("Please enter company id")
         print("Update Dataset")
+        a = APIRequest(key, company)
+        a.performRequest()
     if options.check:
         print("Check movie:", options.check)
 

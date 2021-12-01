@@ -12,7 +12,7 @@ class SearchEngine:
         print(results)
 
     def _checkItemMatch(self, item):
-        if item[0] == "Dave":
+        if self._searchPatter.lower() in item[0].lower():
             return True
         return False
 

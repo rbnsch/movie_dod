@@ -9,7 +9,17 @@ class SearchEngine:
     def checkPattern(self):
         data = self._getData()
         results = list(filter(self._checkItemMatch, data))
-        print(results)
+        self._printer(results)
+
+    def _printer(self, result):
+        if not result:
+            print("No matches found")
+            return
+        print("Oh no!", len(result), "movies found in database:i\n")
+        print("------------------------------------------\n")
+        for movie in result:
+           print(movie[0], "\t", movie[1])
+
 
     def _checkItemMatch(self, item):
         if self._searchPatter.lower() in item[0].lower():

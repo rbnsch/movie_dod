@@ -7,25 +7,19 @@ def main():
     parser.add_option("-c", "--check", dest = "check", type = 'string',
             metavar="MOVIENAME", help='Check a movie if it is financed by Department of Defense')
 
-    parser.add_option("-u", "--update", action = "store_true", dest = "update", help='Update local data basis')
-
-    parser.add_option("-a", "--apikey", dest = "api", type = 'string',
-            metavar="APIKEY", help='Set API Key for IMDB API')
+    parser.add_option("-u", "--update", dest = "apiKey", type = 'string',
+            metavar="APIKEY", help='Update local data basis')
 
     (options, args) = parser.parse_args()
 
-    if not options.check and not options.update and not options.api:
+    if not options.check and not options.apiKey:
         parser.print_help()
         exit()
 
-    if options.api:
-        print("New API Key:", options.api)
-    if options.update:
-        key = input("Please enter api key")
-        company = input("Please enter company id")
+    if options.apiKey:
         print("Update Dataset")
-        a = APIRequest(key, company)
-        a.performRequest()
+        a = APIRequest(options.apiKey, "co0050471")
+        #a.performRequest()
     if options.check:
         print("Check movie:", options.check)
         s = SearchEngine(options.check)

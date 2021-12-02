@@ -1,6 +1,5 @@
 import optparse
-from APIRequests import APIRequest
-from searchEngine import SearchEngine
+from controller import Controller
 
 def main():
     parser = optparse.OptionParser()
@@ -16,14 +15,12 @@ def main():
         parser.print_help()
         exit()
 
+    c = Controller()
+
     if options.apiKey:
-        print("Update Dataset")
-        a = APIRequest(options.apiKey, "co0050471")
-        #a.performRequest()
+        c.updateDataBasis(options.apiKey)
     if options.check:
-        print("Check movie:", options.check)
-        s = SearchEngine(options.check)
-        s.checkPattern()
+        c.checkMovie(options.check)
 
 if __name__ == '__main__':
     main()

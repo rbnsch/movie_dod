@@ -15,12 +15,12 @@ class APIRequest:
 
     def performRequest(self):
         start = 1
+        print("Perform Request. Please wait...")
         while True:
             response = requests.request("GET", self._prepareURL(start),
                     headers=self._headers, data = self._payload)
 
             start += 50
-            print(start)
 
             if response.status_code == 200:
                 data = response.json()
@@ -28,8 +28,11 @@ class APIRequest:
                     self._appendNewMovies(data)
             if start >= 1000 or not data["items"]:
                 break;
+        if not self._movies:
+            print("\nSomething went wrong!")
+            print("Please check your API Key")
+            return
         self._safeMovies()
-
 
     def _appendNewMovies(self, data):
         for movie in data["items"]:
@@ -42,4 +45,5 @@ class APIRequest:
 
     def _safeMovies(self):
         writeStoreage = WriteStorage("data.csv")
+
         writeStoreage.writeContent(self._movies)

@@ -15,7 +15,7 @@ class SearchEngine:
         if not result:
             print("No matches found")
             return
-        print("Oh no!", len(result), "movies found in database:i\n")
+        print("Oh no!", len(result), "titels found financed by the Department of Defense in data basis:\n")
         print("------------------------------------------\n")
         for movie in result:
            print(movie[0], "\t", movie[1])

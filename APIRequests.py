@@ -19,14 +19,12 @@ class APIRequest:
         while True:
             response = requests.request("GET", self._prepareURL(start),
                     headers=self._headers, data = self._payload)
-
             start += 50
-
             if response.status_code == 200:
                 data = response.json()
                 if data["errorMessage"] == "":
                     self._appendNewMovies(data)
-            if start >= 1000 or not data["items"]:
+            if start >= 10 or not data["items"]:
                 break;
         if not self._movies:
             print("\nSomething went wrong!")
@@ -45,5 +43,4 @@ class APIRequest:
 
     def _safeMovies(self):
         writeStoreage = WriteStorage("data.csv")
-
         writeStoreage.writeContent(self._movies)

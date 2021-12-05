@@ -12,6 +12,7 @@ class APIRequest:
         self._payload = {}
         self._headers = {}
         self._movies = []
+        self.writeStoreage = WriteStorage("data.csv")
 
     def performRequest(self):
         start = 1
@@ -42,5 +43,4 @@ class APIRequest:
 
 
     def _safeMovies(self):
-        writeStoreage = WriteStorage("data.csv")
-        writeStoreage.writeContent(self._movies)
+        self.writeStoreage.writeContent(self._movies)

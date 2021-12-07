@@ -1,20 +1,27 @@
 from APIRequests import APIRequest
-from searchEngine import SearchEngine
+from SearchEngine import SearchEngine
+from StorageWriter import WriteStorage
 
 class Controller:
 
 
     def __init__(self):
         self._companyKey = "co0050471"
-
+        self._a = APIRequest(self._companyKey)
+        self.s = SearchEngine()
+        
 
     def updateDataBasis(self, apiKey):
         print("Update data basis")
-        a = APIRequest(apiKey,self._companyKey)
-        a.performRequest()
+        data = self._a.performRequest(apiKey)
+        self._writeData(data)
+        
 
     def checkMovie(self, searchPattern):
         print("Check for movie:", searchPattern)
-        s = SearchEngine(searchPattern)
-        s.checkPattern()
-
+        self.s.checkPattern(searchPattern)
+        
+    def _writeData(self, data):
+        self.writeStoreage = WriteStorage("data.csv")
+        self.writeStoreage.writeContent(data)
+        

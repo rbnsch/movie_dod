@@ -12,6 +12,7 @@ class ReadStorage(DataStorage):
         self._reader = csv.reader(self._file)
 
 
+
     def getContent(self):
         count = 0
         movies = []

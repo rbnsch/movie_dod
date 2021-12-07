@@ -5,16 +5,17 @@ from StorageWriter import WriteStorage
 class APIRequest:
 
 
-    def __init__(self, api_key, company_key):
-        self._api_key = api_key
+    def __init__(self, company_key):
+        self._api_key = ""
         self._company_key = company_key
         self._url = 'https://imdb-api.com/en/API/Company/'
         self._payload = {}
         self._headers = {}
         self._movies = []
-        self.writeStoreage = WriteStorage("data.csv")
+        
 
-    def performRequest(self):
+    def performRequest(self, api_key):
+        self._api_key = api_key
         start = 1
         print("Perform Request. Please wait...")
         while True:
@@ -31,7 +32,8 @@ class APIRequest:
             print("\nSomething went wrong!")
             print("Please check your API Key")
             return
-        self._safeMovies()
+        #self._safeMovies()
+        return self._movies
 
     def _appendNewMovies(self, data):
         for movie in data["items"]:
@@ -42,5 +44,5 @@ class APIRequest:
         return self._url + self._api_key + "/" + self._company_key + "&start=" + str(start)
 
 
-    def _safeMovies(self):
-        self.writeStoreage.writeContent(self._movies)
+    #def _safeMovies(self):
+     #   self.writeStoreage.writeContent(self._movies)

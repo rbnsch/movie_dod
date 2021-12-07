@@ -14,6 +14,10 @@ def main():
     if not options.check and not options.apiKey:
         parser.print_help()
         exit()
+        
+    if options.check and options.apiKey:
+        print("Please don't update the data basis and check a movie at the same time")
+        exit()
 
     c = Controller()
 

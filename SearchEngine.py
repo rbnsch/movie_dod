@@ -3,10 +3,11 @@ from StorageReader import ReadStorage
 class SearchEngine:
 
     def __init__(self):
-        self._reader = ReadStorage("data.csv")
+        self._reader = None
         self._searchPatter = ""
 
     def checkPattern(self, searchPattern):
+        self._reader = ReadStorage("data.csv")
         self._searchPatter = searchPattern
         data = self._getData()
         results = list(filter(self._checkItemMatch, data))

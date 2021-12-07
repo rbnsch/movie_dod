@@ -8,8 +8,13 @@ class ReadStorage(DataStorage):
         self._openFile()
 
     def _openFile(self):
-        self._file = open(self._fileLocation, 'r')
-        self._reader = csv.reader(self._file)
+        try:
+            self._file = open(self._fileLocation, 'r')
+            self._reader = csv.reader(self._file)
+        except FileNotFoundError:
+            print("Error! File data.csv not found! Please update Data Basis")
+            exit()
+            
 
 
 

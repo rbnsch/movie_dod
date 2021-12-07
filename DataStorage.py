@@ -9,4 +9,5 @@ class DataStorage(ABC):
         pass
 
     def __del__(self):
-        self._file.close()
+        if 'self._file' in locals():
+            self._file.close()

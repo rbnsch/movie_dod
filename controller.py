@@ -8,7 +8,7 @@ class Controller:
     def __init__(self):
         self._companyKey = "co0050471"
         self._a = APIRequest(self._companyKey)
-        self.s = SearchEngine()
+        self._s = SearchEngine()
         
 
     def updateDataBasis(self, apiKey):
@@ -19,7 +19,7 @@ class Controller:
 
     def checkMovie(self, searchPattern):
         print("Check for movie:", searchPattern)
-        self.s.checkPattern(searchPattern)
+        self._s.checkPattern(searchPattern)
         
     def _writeData(self, data):
         self.writeStoreage = WriteStorage("data.csv")

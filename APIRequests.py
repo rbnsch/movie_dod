@@ -1,6 +1,5 @@
 import requests
 import json
-from StorageWriter import WriteStorage
 
 class APIRequest:
 

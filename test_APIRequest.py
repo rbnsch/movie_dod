@@ -1,6 +1,5 @@
 from unittest import TestCase, main
 from APIRequests import APIRequest
-from unittest.mock import patch
 
 
 class TestAPIRequest(TestCase):

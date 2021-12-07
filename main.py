@@ -1,5 +1,5 @@
 import optparse
-from controller import Controller
+from Controller import Controller
 
 def main():
     parser = optparse.OptionParser()

@@ -18,13 +18,7 @@ class TestAPIRequest(TestCase):
         self.apiRequest._appendNewMovies(data)
         self.assertEqual(self.apiRequest._movies, result)
 
-    #@patch("StorageWriter.WriteStorage")
-    #def test_safeMovies(self, WriteStorage_mock):
-     #   self.apiRequest.writeStoreage = WriteStorage_mock
-      #  self.apiRequest._safeMovies()
-       # WriteStorage_mock.writeContent.assert_called_once()
-
 if __name__ == '__main__':
-    main()
+    unittest.main()
 
 

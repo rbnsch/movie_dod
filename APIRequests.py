@@ -9,8 +9,6 @@ class APIRequest:
         self._api_key = ""
         self._company_key = company_key
         self._url = 'https://imdb-api.com/en/API/Company/'
-        self._payload = {}
-        self._headers = {}
         self._movies = []
         
 
@@ -19,8 +17,7 @@ class APIRequest:
         start = 1
         print("Perform Request. Please wait...")
         while True:
-            response = requests.request("GET", self._prepareURL(start),
-                    headers=self._headers, data = self._payload)
+            response = requests.request("GET", self._prepareURL(start))
             start += 50
             if response.status_code == 200:
                 data = response.json()
@@ -31,8 +28,7 @@ class APIRequest:
         if not self._movies:
             print("\nSomething went wrong!")
             print("Please check your API Key")
-            return
-        #self._safeMovies()
+            exit()
         return self._movies
 
     def _appendNewMovies(self, data):
@@ -42,7 +38,3 @@ class APIRequest:
 
     def _prepareURL(self, start):
         return self._url + self._api_key + "/" + self._company_key + "&start=" + str(start)
-
-
-    #def _safeMovies(self):
-     #   self.writeStoreage.writeContent(self._movies)

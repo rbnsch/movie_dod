@@ -8,18 +8,11 @@ class TestAPIRequest(TestCase):
         self.Controller = Controller()
 
     @patch("SearchEngine.SearchEngine")
-    def test_checkMovie(self, SearchEngine_mock):
-        self.Controller._s = SearchEngine_mock
-        self.Controller.checkMovie("test")
-        SearchEngine_mock.checkPattern.assert_called_with("test")
-        
-    #@patch("APIRequests.APIRequest")
-    #def test_updateDataBasis(self, APIRequest_mock):
-        #self.Controller._a = APIRequest_mock
-        
+    def test_check_movie(self, search_engine_mock):
+        self.Controller._s = search_engine_mock
+        self.Controller.check_movie("test")
+        search_engine_mock.check_pattern.assert_called_with("test")
+
 
 if __name__ == '__main__':
-    unittest.main()
-
-
-
+    main()

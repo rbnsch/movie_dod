@@ -1,11 +1,13 @@
 from abc import ABC, abstractmethod
 
+
 class DataStorage(ABC):
 
-    def __init__(self, fileLocation):
-        self._fileLocation = fileLocation
+    def __init__(self, file_location):
+        self._file_location = file_location
 
-    def openFile(self):
+    # @abstractmethod
+    def _open_file(self):
         pass
 
     def __del__(self):

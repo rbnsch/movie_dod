@@ -20,7 +20,7 @@ class APIRequest:
                 data = response.json()
                 if data["errorMessage"] == "":
                     self._append_new_movies(data)
-            if start >= 10 or not data["items"]:
+            if start >= 1000 or not data["items"]:
                 break
         if not self._movies:
             print("\nSomething went wrong!")

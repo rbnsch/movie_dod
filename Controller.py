@@ -23,4 +23,3 @@ class Controller:
     def check_movie(self, search_pattern):
         print("Check for movie:", search_pattern)
         self._s.check_pattern(search_pattern)
-        

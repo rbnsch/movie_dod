@@ -1,5 +1,5 @@
 """
-File: main.py
+File: test_SearchEngine.py
 Author: Robin Schmidt
 Purpose: This file is responsible for testing the APIRequest class using Unittest.
 """

@@ -1,3 +1,9 @@
+"""
+File: main.py
+Author: Robin Schmidt
+Purpose: This class is responsible for searching for the movie requested by the user from the data basis and displaying
+all matching results.
+"""
 from StorageReader import ReadStorage
 
 
@@ -15,17 +21,17 @@ class SearchEngine:
 
     def __init__(self):
         self._reader = None
-        self._searchPatter = ""
+        self._search_pattern = ""
 
     def check_pattern(self, search_pattern):
         self._reader = ReadStorage("data.csv")
-        self._searchPatter = search_pattern
+        self._search_pattern = search_pattern
         data = self._get_data()
         results = list(filter(self._check_item_match, data))
         print_results(results)
 
     def _check_item_match(self, item):
-        if self._searchPatter.lower() in item[0].lower():
+        if self._search_pattern.lower() in item[0].lower():
             return True
         return False
 

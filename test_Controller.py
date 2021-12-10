@@ -1,3 +1,8 @@
+"""
+File: main.py
+Author: Robin Schmidt
+Purpose: This file is responsible for testing the APIRequest class using Unittest.
+"""
 from unittest import TestCase, main
 from Controller import Controller
 from unittest.mock import patch

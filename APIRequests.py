@@ -1,3 +1,8 @@
+"""File: main.py
+Author: Robin Schmidt
+Purpose: This class is responsible for fetching all titles from the IMDB
+database that have been supported by the Department of defense.
+"""
 import requests
 
 

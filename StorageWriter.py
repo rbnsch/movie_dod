@@ -1,3 +1,8 @@
+"""
+File: main.py
+Author: Robin Schmidt
+Purpose: This class is responsible for overwriting data in the csv file.
+"""
 from DataStorage import DataStorage
 import csv
 

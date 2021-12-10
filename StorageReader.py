@@ -1,3 +1,8 @@
+"""
+File: main.py
+Author: Robin Schmidt
+Purpose: This class is responsible for reading all data from the csv file.
+"""
 from DataStorage import DataStorage
 import csv
 

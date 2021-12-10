@@ -1,3 +1,8 @@
+"""
+File: main.py
+Author: Robin Schmidt
+Purpose: This class is responsible for passing the task requested by the user to the appropriate classes.
+"""
 from APIRequests import APIRequest
 from SearchEngine import SearchEngine
 from StorageWriter import WriteStorage

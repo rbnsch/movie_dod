@@ -1,3 +1,9 @@
+"""
+File: main.py
+Author: Robin Schmidt
+Purpose: The main file is responsible for evaluating the passed parameters and arguments with the help of optparse and
+calling the corresponding controller method.
+"""
 import optparse
 from Controller import Controller
 

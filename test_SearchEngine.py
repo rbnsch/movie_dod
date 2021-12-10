@@ -1,3 +1,8 @@
+"""
+File: main.py
+Author: Robin Schmidt
+Purpose: This file is responsible for testing the APIRequest class using Unittest.
+"""
 from unittest import TestCase, main
 from SearchEngine import SearchEngine, print_results
 from unittest.mock import patch
@@ -7,7 +12,7 @@ from io import StringIO
 class TestAPIRequest(TestCase):
     def setUp(self):
         self.searchEngine = SearchEngine()
-        self.searchEngine._searchPatter = "Movie"
+        self.searchEngine._search_pattern = "Movie"
 
     def test_check_item_match_true(self):
         self.assertTrue(self.searchEngine._check_item_match(["movie", "2020"]))

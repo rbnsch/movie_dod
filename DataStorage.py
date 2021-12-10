@@ -1,4 +1,9 @@
-from abc import ABC, abstractmethod
+"""
+File: main.py
+Author: Robin Schmidt
+Purpose: The abstract class defined the structure of the classes that manage the data basis.
+"""
+from abc import ABC
 
 
 class DataStorage(ABC):
@@ -6,7 +11,6 @@ class DataStorage(ABC):
     def __init__(self, file_location):
         self._file_location = file_location
 
-    # @abstractmethod
     def _open_file(self):
         pass
 
